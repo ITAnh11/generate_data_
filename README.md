@@ -4,10 +4,10 @@ Provide instructions on how to install and set up your project.
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/ITAnh11/generate_data_onlyf.git
 
 # Navigate to the project directory
-cd your-repo
+cd generate_data_onlyf
 ```
 
 # Install dependencies
