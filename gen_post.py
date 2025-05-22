@@ -46,11 +46,13 @@ def generate_insert_statement_post(n):
     VIDEO_URLS = fetch_video_urls_from_pexels()
 
     values = []
+    count = 0
     for i in range(1, n + 1):
         list_my_postId = []
         length = random.randint(5, 100)
-        for j in range(1, length):
-            list_my_postId.append(i * length + j)
+        for j in range(1, length + 1):
+            count += 1
+            list_my_postId.append(count)
             type=random.choices(['image', 'video'], weights=[0.7, 0.3])[0]
             if type == 'image':
                 userId = i
@@ -75,9 +77,10 @@ def generate_insert_statement_post(n):
                 createdAt = fake.date_time_this_decade().strftime('%Y-%m-%d %H:%M:%S')
                 updatedAt = createdAt
 
-            postIds.append(list_my_postId) 
             values.append(f"('{caption}', '{type}', '{urlPublicImage}', '{pathImage}', '{urlPublicVideo}', '{publicIdVideo}', '{hlsUrlVideo}', '{createdAt}', '{updatedAt}', {userId})")
 
+        postIds.append(list_my_postId)
+        # print(postIds[i-1])
      # Tạo câu lệnh INSERT duy nhất
     statement = (
         f"INSERT INTO \"post\" (\"caption\", \"type\", \"urlPublicImage\", \"pathImage\", \"urlPublicVideo\", \"publicIdVideo\", \"hlsUrlVideo\", \"createdAt\", \"updatedAt\", \"userId\") VALUES \n"

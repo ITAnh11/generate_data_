@@ -11,7 +11,11 @@ def generate_insert_statement_user(n):
     emails = set()  # Tập hợp để lưu trữ các email đã tạo
     for i in range(1, n + 1):
         # Tạo email duy nhất
-        email = fake.email()
+        email = ''
+        if i <= 10:
+            email = f"a{i}@gmail.com"
+        else:
+            email = fake.email()
         while email in emails:
             email = fake.email()
         emails.add(email)  # Thêm email vào tập hợp

@@ -18,16 +18,17 @@ def generate_insert_statement_react(n):
     values = []
     for i in range(1, n + 1):
         for j in friends[i-1]:
-            for k in range(1, random.randint(5, 50)):
-                userId = i
-                postId = random.choice(postIds[j-1])
-                createdAt = fake.date_time_between(start_date='-30d', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
-        
-                type = random.choice(LIST_EMOJIS)
+            for k in postIds[j-1]:
+                for l in range(1, random.randint(0, 3)):
+                    userId = i
+                    postId = k
+                    createdAt = fake.date_time_between(start_date='-30d', end_date='now').strftime('%Y-%m-%d %H:%M:%S')
             
-                values.append(
-                    f"({userId}, {postId}, '{type}', '{createdAt}')"
-                )
+                    type = random.choice(LIST_EMOJIS)
+                
+                    values.append(
+                        f"({userId}, {postId}, '{type}', '{createdAt}')"
+                    )
 
     # Tạo câu lệnh INSERT duy nhất
     statement = (

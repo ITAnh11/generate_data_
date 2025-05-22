@@ -46,8 +46,6 @@ def generate_insert_statement_message(n):
     print(f"Đang tạo dữ liệu cho bảng user với {n} dòng dữ liệu...")
     VIDEO_URLS = fetch_video_urls_from_pexels()
 
-    for i, friend in enumerate(friends):
-        print(f"Người dùng {i+1} có {len(friend)} bạn bè.")
     values = []
     for i in range(1, n + 1):
         for j in friends[i-1]:
